@@ -1,161 +1,89 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * l10n_it_account
-# 
+#
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: l10n-italy (8.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 09:52+0000\n"
-"PO-Revision-Date: 2016-03-01 08:26+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-l10n-italy-8-0/language/sl/)\n"
+"POT-Creation-Date: 2017-07-26 14:46+0000\n"
+"PO-Revision-Date: 2017-07-26 14:46+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #. module: l10n_it_account
-#: model:ir.model,name:l10n_it_account.model_account_account
-msgid "Account"
-msgstr "Konto"
+#: model:ir.ui.view,arch_db:l10n_it_account.internal_layout
+msgid ""
+"<br/>\n"
+"                      <span class=\"text-right\">Vat:</span>"
+msgstr ""
 
 #. module: l10n_it_account
-#: model:ir.model,name:l10n_it_account.model_res_company
-msgid "Companies"
-msgstr "Družbe"
+#: model:ir.ui.menu,name:l10n_it_account.menu_date_range_type_action
+msgid "Date Range Types"
+msgstr ""
 
 #. module: l10n_it_account
-#: field:l10n_it.config.settings,company_id:0
-msgid "Company"
-msgstr "Družba"
+#: model:ir.ui.menu,name:l10n_it_account.menu_date_range_action
+msgid "Date Ranges"
+msgstr ""
 
 #. module: l10n_it_account
-#: selection:account.tax.code,vat_statement_type:0
-msgid "Credit"
-msgstr "V dobro"
+#: model:ir.ui.menu,name:l10n_it_account.menu_date_range
+msgid "Date ranges"
+msgstr ""
 
 #. module: l10n_it_account
-#: selection:account.tax.code,vat_statement_type:0
-msgid "Debit"
-msgstr "V breme"
+#: model:ir.ui.menu,name:l10n_it_account.menu_date_range_generator_action
+msgid "Generate Date Ranges"
+msgstr ""
 
 #. module: l10n_it_account
-#: view:account.tax.code:l10n_it_account.view_tax_code_form_vat
-msgid "Description"
-msgstr "Opis"
+#: model:ir.model.fields,field_description:l10n_it_account.field_account_tax_cee_type
+msgid "Include in VAT register"
+msgstr ""
 
 #. module: l10n_it_account
-#: code:addons/l10n_it_account/models/account_tax.py:88
-#: code:addons/l10n_it_account/models/account_tax.py:97
-#: code:addons/l10n_it_account/models/account_tax.py:106
-#: code:addons/l10n_it_account/models/account_tax.py:115
-#, python-format
-msgid "Error!"
-msgstr "Napaka!"
+#: model:ir.ui.menu,name:l10n_it_account.account_italian_localization
+msgid "Italian Localization"
+msgstr ""
 
 #. module: l10n_it_account
-#: view:website:l10n_it_account.internal_layout
-msgid "Fiscalcode:"
-msgstr "Davčna koda:"
-
-#. module: l10n_it_account
-#: field:account.account,inverse_user_type:0
-msgid "Inverse Account Type"
-msgstr "Inverzni tip konta"
-
-#. module: l10n_it_account
-#: field:account.account,inverse_parent_id:0
-msgid "Inverse Parent"
-msgstr "Inverzni nadrejeni"
-
-#. module: l10n_it_account
-#: field:account.tax.code,is_base:0
-msgid "Is base"
-msgstr "Je osnova"
-
-#. module: l10n_it_account
-#: field:account.tax,nondeductible:0
-msgid "Non-deductible"
-msgstr "Neodbitni"
-
-#. module: l10n_it_account
-#: view:website:l10n_it_account.internal_layout
+#: model:ir.ui.view,arch_db:l10n_it_account.internal_layout
 msgid "Pag:"
 msgstr "Plač:"
 
 #. module: l10n_it_account
-#: help:account.tax,nondeductible:0
-msgid "Partially or totally non-deductible."
-msgstr "Delno ali v celoti ne-odbitni."
+#: model:ir.model.fields,field_description:l10n_it_account.field_account_tax_parent_tax_ids
+msgid "Parent Taxes"
+msgstr ""
 
 #. module: l10n_it_account
-#: help:l10n_it.config.settings,skip_it_account_check:0
-#: help:res.company,skip_it_account_check:0
-msgid ""
-"Set this for not Italian companies, to skip checking things like tax codes "
-"consistencies"
-msgstr "Nastavite za ne italijanske družbe, da preskočite stvari, kot npr. nekonsistenca davčnih kod"
+#: selection:account.tax,cee_type:0
+msgid "Purchase"
+msgstr "Nabava"
 
 #. module: l10n_it_account
-#: field:l10n_it.config.settings,skip_it_account_check:0
-#: field:res.company,skip_it_account_check:0
-msgid "Skip Italian checks"
-msgstr "Preskoči italijanske preverbe"
+#: selection:account.tax,cee_type:0
+msgid "Sale"
+msgstr "Prodaja"
 
 #. module: l10n_it_account
 #: model:ir.model,name:l10n_it_account.model_account_tax
 msgid "Tax"
-msgstr "Davek"
+msgstr ""
 
 #. module: l10n_it_account
-#: model:ir.model,name:l10n_it_account.model_account_tax_code
-msgid "Tax Code"
-msgstr "Davčna koda"
-
-#. module: l10n_it_account
-#: code:addons/l10n_it_account/models/account_tax.py:89
-#: code:addons/l10n_it_account/models/account_tax.py:98
-#: code:addons/l10n_it_account/models/account_tax.py:107
-#: code:addons/l10n_it_account/models/account_tax.py:116
-#, python-format
-msgid "Tax code %s already used in other purchase tax"
-msgstr "Davčna koda %s je že uporabljena pri drugem davku nabave"
-
-#. module: l10n_it_account
-#: help:account.tax.code,vat_statement_type:0
-msgid "This establish whether amount will be loaded as debit or credit"
-msgstr "Ugotovi, če bo znesek obravnavan kot terjatev ali kot obveznost"
-
-#. module: l10n_it_account
-#: help:account.tax.code,is_base:0
+#: model:ir.model.fields,help:l10n_it_account.field_account_tax_cee_type
 msgid ""
-"This tax code is used for base amounts          (field used by VAT "
-"registries)"
-msgstr "Ta davčna koda se uporablja za zneske osnove (polje uporabljeno v DDV registru)"
-
-#. module: l10n_it_account
-#: field:account.tax.code,vat_statement_type:0
-msgid "Type"
-msgstr "Tip"
-
-#. module: l10n_it_account
-#: help:account.account,inverse_parent_id:0
-#: help:account.account,inverse_user_type:0
-msgid ""
-"Used on balance sheet to report this account when its balance is         "
-"negative"
-msgstr "Uporabljeno pri bilanci za poročanje tega konta, ko je njegova bilanca negativna"
-
-#. module: l10n_it_account
-#: view:account.tax.code:l10n_it_account.view_tax_code_form_vat
-msgid "VAT statement"
-msgstr "DDV izjava"
-
-#. module: l10n_it_account
-#: view:website:l10n_it_account.internal_layout
-msgid "Vat:"
-msgstr "DDV:"
+"Use in the case of tax with 'VAT integration'. This specifies the VAT "
+"register (sales / purchases) where the tax must be computed."
+msgstr ""

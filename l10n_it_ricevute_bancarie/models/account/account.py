@@ -4,7 +4,7 @@
 # Web site: http://www.andreacometa.it
 # Copyright (C) 2012 Associazione OpenERP Italia
 # (<http://www.odoo-italia.org>).
-# Copyright (C) 2012-2017 Lorenzo Battistini - Agile Business Group
+# Copyright (C) 2012-2018 Lorenzo Battistini - Agile Business Group
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models, api, _
@@ -35,6 +35,16 @@ class ResPartnerBankAdd(models.Model):
     codice_sia = fields.Char(
         "SIA Code", size=5,
         help="Identification Code of the Company in the System Interbank")
+
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+    riba_accredited_ids = fields.One2many(
+        'riba.distinta', 'accreditation_move_id', 'Distinte RiBa accredited',
+        readonly=True)
+    riba_unsolved_ids = fields.One2many(
+        'riba.distinta.line', 'unsolved_move_id', 'Distinte RiBa unsolved',
+        readonly=True)
 
 
 # se distinta_line_ids == None allora non è stata emessa
@@ -207,11 +217,12 @@ class AccountInvoice(models.Model):
     def action_invoice_draft(self):
         # ---- Delete Due Cost Line of invoice when set Back to Draft
         # ---- line was added on new validate
+        super(AccountInvoice, self).action_invoice_draft()
         for invoice in self:
+            invoice.refresh()
             for line in invoice.invoice_line_ids:
                 if line.due_cost_line:
                     line.unlink()
-        super(AccountInvoice, self).action_invoice_draft()
 
     @api.multi
     def action_cancel(self):
@@ -243,6 +254,7 @@ class AccountInvoice(models.Model):
             for line in invoice.invoice_line_ids:
                 if line.due_cost_line:
                     line.unlink()
+        return invoice
 
 
 class AccountInvoiceLine(models.Model):
