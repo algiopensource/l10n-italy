@@ -3,7 +3,6 @@
 # Copyright 2018 Lorenzo Battistini - Agile Business Group
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-
 from odoo import models, fields, api, _
 import odoo.addons.decimal_precision as dp
 from odoo.exceptions import ValidationError
@@ -277,6 +276,34 @@ class AccountMoveLine(models.Model):
 
         return super(AccountMoveLine, self).remove_move_reconcile()
 
+    @api.multi
+    def prepare_move_lines_for_reconciliation_widget(
+            self, target_currency=False, target_date=False):
+        """
+        Net amount for invoices with withholding tax
+        """
+        res = super(
+            AccountMoveLine, self
+        ).prepare_move_lines_for_reconciliation_widget(
+            target_currency, target_date)
+        for dline in res:
+            if 'id' in dline and dline['id']:
+                line = self.browse(dline['id'])
+                if line.withholding_tax_amount:
+                    dline['debit'] = (
+                        line.debit - line.withholding_tax_amount if line.debit
+                        else 0
+                    )
+                    dline['credit'] = (
+                        line.credit - line.withholding_tax_amount
+                        if line.credit else 0
+                    )
+                    dline['name'] += (
+                        _(' (Net to pay: %s)')
+                        % (dline['debit'] or dline['credit'])
+                    )
+        return res
+
 
 class AccountFiscalPosition(models.Model):
     _inherit = "account.fiscal.position"
@@ -470,14 +497,14 @@ class AccountInvoiceWithholdingTax(models.Model):
             (1 - (line.discount or 0.0) / 100.0)
         return price_unit
 
-    @api.depends('base', 'tax')
+    @api.depends('base', 'tax', 'invoice_id.amount_untaxed')
     def _compute_coeff(self):
         for inv_wt in self:
             if inv_wt.invoice_id.amount_untaxed:
-                inv_wt.base_coeff = round(
-                    inv_wt.base / inv_wt.invoice_id.amount_untaxed, 5)
+                inv_wt.base_coeff = \
+                    inv_wt.base / inv_wt.invoice_id.amount_untaxed
             if inv_wt.base:
-                inv_wt.tax_coeff = round(inv_wt.tax / inv_wt.base, 5)
+                inv_wt.tax_coeff = inv_wt.tax / inv_wt.base
 
     invoice_id = fields.Many2one('account.invoice', string='Invoice',
                                  ondelete="cascade")
